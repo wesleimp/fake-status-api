@@ -1,21 +1,55 @@
-# FakeStatusApi
+# FakeStatusAPI
 
-**TODO: Add description**
+Simulate several status code responses for your API tests
 
-## Installation
+## References
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `fake_status_api` to your list of dependencies in `mix.exs`:
+**Healthcheck**
 
-```elixir
-def deps do
-  [
-    {:fake_status_api, "~> 0.1.0"}
-  ]
-end
+`/_ah/health`
+
+```sh
+$ curl -i http://localhost:4000/_ah/health
+HTTP/1.1 200 OK
+
+Health :)
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/fake_status_api](https://hexdocs.pm/fake_status_api).
+**Statuses**
 
+`/api/status/:status`
+
+```sh
+$ curl -i http://localhost:4000/api/status/201
+HTTP/1.1 201 Created
+
+{"status":201}
+```
+
+[Known status codes](https://hexdocs.pm/plug/Plug.Conn.Status.html#code/1-known-status-codes)
+
+## Contributing
+
+Clone this repository anywhere
+
+```sh
+git clone git@github.com:wesleimp/fake-status-api.git
+```
+
+Install and compile dependencies
+
+```sh
+mix do deps.get, deps.compile
+```
+
+A good way of making sure everything is all right is running the test suite:
+
+```sh
+MIX_ENV=test mix test
+```
+
+Running the API locally
+
+```
+mix run --no-halt
+```
