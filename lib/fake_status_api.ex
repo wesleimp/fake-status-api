@@ -1,0 +1,2 @@
+defmodule FakeStatusAPI do
+end
