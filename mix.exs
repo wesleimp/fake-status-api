@@ -26,7 +26,7 @@ defmodule FakeStatusAPI.MixProject do
       {:plug, "~> 1.11"},
       {:cowboy, "~> 2.8"},
       {:plug_cowboy, "~> 2.0"},
-      {:heartcheck, "~> 0.4"}
+      {:credo, "~> 1.4", only: [:dev, :test], runtime: false}
     ]
   end
 end
