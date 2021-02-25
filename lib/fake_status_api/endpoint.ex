@@ -1,4 +1,6 @@
 defmodule FakeStatusAPI.Endpoint do
+  require Logger
+
   use Plug.Router
 
   plug(:match)
@@ -18,6 +20,9 @@ defmodule FakeStatusAPI.Endpoint do
   end
 
   def start_link(_) do
-    Plug.Adapters.Cowboy.http(__MODULE__, [])
+    with {:ok, [port: port]} <- Application.fetch_env(:fake_status_api, __MODULE__) do
+      Logger.info("Starting server at http://localhost:#{port}")
+      Plug.Adapters.Cowboy.http(__MODULE__, [])
+    end
   end
 end

@@ -8,7 +8,7 @@ defmodule FakeStatusAPI.Router do
   get "/" do
     conn
     |> put_resp_content_type(@content_type)
-    |> send_resp(:ok, "Welcome to Fake Status API! :)")
+    |> send_resp(:ok, "Welcome to the Fake Status API! :)")
   end
 
   get "/_ah/health" do
